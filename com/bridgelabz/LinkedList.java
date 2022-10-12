@@ -1,10 +1,10 @@
-/*Ability to insert 30 between 56 and 70 - Final Sequence: 56->30->70*/
+/*Ability to delete the first element in the LinkedList of sequence 56->30->70 - Write pop method*/
 
 package com.bridgelabz;
 
 public class LinkedList<T> {
 
-    Node head, tail;
+    Node<T> head, tail;
     static class Node <T>{
 
         T data;
@@ -69,6 +69,16 @@ public class LinkedList<T> {
         }
     }
 
+    public T popFirst() {
+        if (head == null) {
+            return null;
+        } else {
+            T data = head.data;
+            head = head.next;
+            return data;
+        }
+    }
+
     public static void main(String[] args)
     {
 
@@ -78,6 +88,8 @@ public class LinkedList<T> {
         list.append(56);
         list.append(70);
         list.insert(30);
+        list.printList(list);
+        list.popFirst();
         list.printList(list);
     }
 }
