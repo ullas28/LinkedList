@@ -1,11 +1,10 @@
-/*Ability to create Linked List by adding 30 and 56 to 70*/
+/*Ability to create Linked List by appending 30 and 70 to 56*/
 
 package com.bridgelabz;
 
 public class LinkedList {
 
-
-    static Node head;
+    Node head;
     static class Node {
 
         int data;
@@ -30,8 +29,13 @@ public class LinkedList {
         }
         else {
 
-            new_node.next = head;
-            head = new_node;
+            Node last = list.head;
+            while (last.next != null) {
+                last = last.next;
+            }
+
+
+            last.next = new_node;
         }
 
         return list;
@@ -48,6 +52,7 @@ public class LinkedList {
 
             System.out.print(currNode.data + " ");
 
+
             currNode = currNode.next;
         }
     }
@@ -59,9 +64,10 @@ public class LinkedList {
         LinkedList list = new LinkedList();
 
 
-        list = append(list, 70);
-        list = append(list, 30);
         list = append(list, 56);
+        list = append(list, 30);
+        list = append(list, 70);
+
 
         printList(list);
     }
