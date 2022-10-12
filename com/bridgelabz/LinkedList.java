@@ -1,16 +1,16 @@
-/*Ability to create Linked List by appending 30 and 70 to 56*/
+/*Ability to insert 30 between 56 and 70 - Final Sequence: 56->30->70*/
 
 package com.bridgelabz;
 
-public class LinkedList {
+public class LinkedList<T> {
 
-    Node head;
-    static class Node {
+    Node head, tail;
+    static class Node <T>{
 
-        int data;
+        T data;
         Node next;
 
-        Node(int d)
+        Node(T d)
         {
             data = d;
             next = null;
@@ -18,18 +18,17 @@ public class LinkedList {
     }
 
 
-    public static LinkedList append(LinkedList list, int data)
+    public  void append(int data)
     {
 
         Node new_node = new Node(data);
 
-
-        if (list.head == null) {
-            list.head = new_node;
+        if (head == null) {
+            head = new_node;
         }
         else {
 
-            Node last = list.head;
+            Node last = head;
             while (last.next != null) {
                 last = last.next;
             }
@@ -38,11 +37,10 @@ public class LinkedList {
             last.next = new_node;
         }
 
-        return list;
     }
 
 
-    public static void printList(LinkedList list)
+    public  void printList(LinkedList list)
     {
         Node currNode = list.head;
 
@@ -57,19 +55,30 @@ public class LinkedList {
         }
     }
 
+    public  void insert(T data) {
+        Node<T> newNode = new Node(data);
+        if (head == null) {
+            head = newNode;
+            tail = newNode;
+        } else {
+            Node<T> temp, current;
+            current = head;
+            temp = head.next;
+            current.next = newNode;
+            newNode.next = temp;
+        }
+    }
 
     public static void main(String[] args)
     {
 
-        LinkedList list = new LinkedList();
+        LinkedList<Integer> list = new LinkedList();
 
 
-        list = append(list, 56);
-        list = append(list, 30);
-        list = append(list, 70);
-
-
-        printList(list);
+        list.append(56);
+        list.append(70);
+        list.insert(30);
+        list.printList(list);
     }
 }
 
