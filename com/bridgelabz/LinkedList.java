@@ -79,6 +79,21 @@ public class LinkedList<T> {
         }
     }
 
+    public T popLast() {
+        if (head == null) {
+            return null;
+        } else {
+            Node<T> temp = head;
+            while (temp.next != tail) {
+                tail = temp.next;
+            }
+            T data = tail.data;
+            temp.next = null;
+            tail = temp;
+            return data;
+        }
+    }
+
     public static void main(String[] args)
     {
 
@@ -91,6 +106,9 @@ public class LinkedList<T> {
         list.printList(list);
         list.popFirst();
         list.printList(list);
+        list.popLast();
+        list.printList(list);
+
     }
 }
 
